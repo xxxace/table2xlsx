@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(process.cwd(), "./lib"),
         filename: "[name].js",
         chunkFilename: '[id].js',
-        libraryExport: 'default',
+        // libraryExport: 'default',
         library: 'table2xlsx',
         libraryTarget: 'commonjs2'
     },
