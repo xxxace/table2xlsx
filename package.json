@@ -1,13 +1,16 @@
 {
   "name": "table2xlsx",
   "version": "1.0.0",
-  "description": "",
-  "main": "/src/main.ts",
+  "description": "html table to xlsx without render dom",
+  "main": "/lib/main.js",
   "files": [
-    "src"
+    "lib",
+    "src",
+    "types"
   ],
   "scripts": {
-    "serve": "webpack server --config build/webpack.dev.js"
+    "serve": "webpack server --config build/webpack.dev.js",
+    "lib": "webpack --config build/webpack.lib.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "core-js": "^3.20.0",
     "html-webpack-plugin": "^5.5.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0",
@@ -38,6 +42,7 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "@types/file-saver": "^2.0.4",
     "file-saver": "^2.0.5",
     "xlsx": "^0.17.4"
   }
