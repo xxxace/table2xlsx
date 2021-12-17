@@ -1,4 +1,4 @@
-import table2xlsx from "./components/Table2Xlsx";
+import {Table2Xlsx} from "./components/Table2Xlsx";
 import {IColumn, IData} from "../types/index";
 
 const columns: IColumn[] = [{

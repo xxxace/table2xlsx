@@ -9,7 +9,7 @@ export interface IOption {
     dataSource: IData[]
 }
 
-export default class Table2Xlsx {
+export class Table2Xlsx {
 
     static createTable(columns: IColumn[], dataSource: IData[]): HTMLTableElement {
         return Table.create(columns, dataSource);

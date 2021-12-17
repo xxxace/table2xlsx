@@ -4,7 +4,7 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
     mode: 'production',
-    entry: path.resolve(process.cwd(), "./src/components/Table2Xlsx.ts"),
+    entry: path.resolve(process.cwd(), "./src/components/index.ts"),
     output: {
         path: path.resolve(process.cwd(), "./lib"),
         filename: "[name].js",
