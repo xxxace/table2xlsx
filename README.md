@@ -1,6 +1,6 @@
 # table2xlsx
-html表格导出xlsx文件,无需渲染dom.  
-html table to export xlsx without render dom.
+html表格导出xlsx文件,无需渲染dom,基于``xlsx`` 和 ``file-saver``
+html table to export xlsx without render dom. based on ``xlsx`` and ``file-saver``.
 
 当前版本只支持导出 ```.xlsx```  
 Currently, only ```.xlsx``` is supported!!!
