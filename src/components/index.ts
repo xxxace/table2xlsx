@@ -1,3 +1,6 @@
-import {Table2Xlsx} from "./Table2Xlsx";
+import {getExcel, createTable} from "./Table2Xlsx";
 
-export default Table2Xlsx;
+export default {
+    getExcel,
+    createTable
+};

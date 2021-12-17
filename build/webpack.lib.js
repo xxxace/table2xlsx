@@ -1,6 +1,7 @@
 const path = require("path");
 const ProgressWebpackPlugin = require("progress-bar-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -9,7 +10,7 @@ module.exports = {
         path: path.resolve(process.cwd(), "./lib"),
         filename: "[name].js",
         chunkFilename: '[id].js',
-        // libraryExport: 'default',
+        libraryExport: 'default',
         library: 'table2xlsx',
         libraryTarget: 'commonjs2'
     },
@@ -24,7 +25,15 @@ module.exports = {
         children: false
     },
     optimization: {
-        minimize: false
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    output: {
+                        comments: false
+                    }
+                }
+            })
+        ]
     },
     module: {
         rules: [{

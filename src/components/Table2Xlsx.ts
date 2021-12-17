@@ -9,25 +9,22 @@ export interface IOption {
     dataSource: IData[]
 }
 
-export class Table2Xlsx {
+export function createTable(columns: IColumn[], dataSource: IData[]): HTMLTableElement {
+    return Table.create(columns, dataSource);
+}
 
-    static createTable(columns: IColumn[], dataSource: IData[]): HTMLTableElement {
-        return Table.create(columns, dataSource);
+export function getExcel(option: IOption) {
+    const fileName = option.fileName + '.xlsx';
+    const table = createTable(option.columns, option.dataSource);
+    const workbook = xlsx.utils.table_to_book(table);
+    const bytes = xlsx.write(workbook, {bookType: 'xlsx', bookSST: true, type: 'array'});
+
+    try {
+        const type = 'application/octet-stream';
+        FileSaver.saveAs(new Blob([bytes], {type}), fileName);
+    } catch (e) {
+        if (typeof e !== "undefined") console.log(e, bytes);
     }
 
-    static getExcel(option: IOption) {
-        const fileName = option.fileName + '.xlsx';
-        const table = this.createTable(option.columns, option.dataSource);
-        const workbook = xlsx.utils.table_to_book(table);
-        const bytes = xlsx.write(workbook, {bookType: 'xlsx', bookSST: true, type: 'array'});
-
-        try {
-            const type = 'application/octet-stream';
-            FileSaver.saveAs(new Blob([bytes], {type}), fileName);
-        } catch (e) {
-            if (typeof e !== "undefined") console.log(e, bytes);
-        }
-
-        return bytes;
-    }
+    return bytes;
 }
