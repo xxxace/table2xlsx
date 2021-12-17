@@ -11,7 +11,7 @@ module.exports = {
         filename: "[name].js",
         chunkFilename: '[id].js',
         libraryExport: 'default',
-        library: 'table2xlsx',
+        // library: 'table2xlsx',
         libraryTarget: 'commonjs2'
     },
     resolve: {
