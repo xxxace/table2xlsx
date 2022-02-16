@@ -1,6 +1,6 @@
 import Table from "./Table";
 import FileSaver from 'file-saver';
-import xlsx from 'xlsx';
+import {write,utils} from 'xlsx';
 import {IColumn, IData} from "../../types/index";
 
 export interface IOption {
@@ -16,8 +16,8 @@ export function createTable(columns: IColumn[], dataSource: IData[]): HTMLTableE
 export function getExcel(option: IOption) {
     const fileName = option.fileName + '.xlsx';
     const table = createTable(option.columns, option.dataSource);
-    const workbook = xlsx.utils.table_to_book(table);
-    const bytes = xlsx.write(workbook, {bookType: 'xlsx', bookSST: true, type: 'array'});
+    const workbook = utils.table_to_book(table);
+    const bytes = write(workbook, {bookType: 'xlsx', bookSST: true, type: 'array'});
 
     try {
         const type = 'application/octet-stream';
