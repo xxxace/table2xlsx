@@ -1,4 +1,4 @@
-import {getExcel} from "./components/Table2Xlsx";
+import {getExcel,getExcelSync} from "./components/Table2Xlsx";
 import {IColumn, IData} from "../types/index";
 
 const columns: IColumn[] = [{
@@ -27,5 +27,10 @@ const dataSource: IData[] = [{
 }]
 
 // setTimeout(() => {
-//     table2xlsx.getExcel({fileName: '測試測試', columns, dataSource});
+//     console.log('start')
+//     getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
+//         console.log('success')
+//     }).catch(err => {
+//         console.log('error')
+//     });
 // }, 2000)
