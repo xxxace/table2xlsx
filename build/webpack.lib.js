@@ -2,6 +2,8 @@ const path = require("path");
 const ProgressWebpackPlugin = require("progress-bar-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'production',
@@ -25,6 +27,8 @@ module.exports = {
         children: false
     },
     optimization: {
+        usedExports:true,
+        minimize: true,
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
@@ -54,11 +58,13 @@ module.exports = {
                         ]
                     ]
                 }
-            }, 'ts-loader']
+            }, 'ts-loader'],
+            exclude: /node_modules/
         }]
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ProgressWebpackPlugin()
+        new ProgressWebpackPlugin(),
+        new BundleStatsWebpackPlugin(),
     ]
 }
