@@ -8,7 +8,7 @@ Currently, only ```.xlsx``` is supported!!!
 **install:**  
 ````npm i table2xlsx````
 or
-````yran add table2xlsx````
+````yarn add table2xlsx````
 
 **usage:**
 ````
@@ -45,6 +45,18 @@ table2xlsx.getExcel({
     dataSource: dataSource
 });
 ````
+**getBytes(columns:IColumn[],dataSource: IData[]):any**  
+```` 
+const fileName = option.fileName + '.xlsx';
+const bytes = getBytes(columns, dataSource)
+
+try {
+    const type = 'application/octet-stream';
+    FileSaver.saveAs(new Blob([bytes], {type}), fileName);
+} catch (e) {
+    if (typeof e !== "undefined") console.log(e, bytes);
+}
+```` 
 **getExcel(option:IOption)**  
 ````
 interface IOption {
@@ -60,3 +72,24 @@ interface IOption {
     dataSource:  {[index: string]: any}[]
 }
 ```` 
+**getExcelSync(option:IOption):Promise\<unknown>**  
+```` 
+// 在调用"fliveSave.saveAs"后立即调用resolve,所以不会太精准
+// "resolve" fire immediately after "fliveSave.saveAs" fired so it won't be precise
+getExcelSync({fileName: 'a_ce is dope', columns, dataSource}).then(res => {
+    console.log('success')
+}).catch(err => {
+    console.log('error')
+});
+```` 
+**createTable(columns: IColumn[], dataSource: IData[]):HTMLTableElement**  
+
+如果此项目对你有帮助欢迎star！！！
+<br/>
+如果你有兴趣或对我的代码实在看不下去欢迎来参与建设改造
+<br/>
+欢迎加群交流，群过期了欢迎加我个人微信进群（备注：t2x）
+<br/>
+<img src="https://raw.githubusercontent.com/xxxace/table2xlsx/main/qrcode_ace.jpg" width="260"  alt="微信小程序"/>
+<img src="https://raw.githubusercontent.com/xxxace/table2xlsx/main/qrcode_group.jpg" width="268"  alt="微信小程序"/><br/>
+
