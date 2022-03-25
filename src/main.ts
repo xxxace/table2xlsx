@@ -34,3 +34,25 @@ const dataSource: IData[] = [{
 //         console.log('error')
 //     });
 // }, 2000)
+
+window.onload= ()=>{
+    let exportBtn = document.querySelector('#export') as HTMLElement
+
+    exportBtn.addEventListener('click',()=>{
+        // getExcelSync({
+        //     fileName:'ace_is_me',
+        //     target:document.querySelector('#tb') as HTMLElement
+        // }).then(res=>{
+        //     console.log('success')
+        // }).catch(err=>{
+        //     console.log('error')
+        // })
+
+
+        getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
+        console.log('success')
+    }).catch(err => {
+        console.log('error')
+    });
+    })
+}
