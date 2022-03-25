@@ -1,6 +1,6 @@
 # table2xlsx
 html表格导出xlsx文件,无需渲染dom,基于``xlsx`` 和 ``file-saver``  
-html table to export xlsx without render dom. based on ``xlsx`` and ``file-saver``.
+export xlsx file using html table without render dom. based on ``xlsx`` and ``file-saver``.
 
 当前版本只支持导出 ```.xlsx```  
 Currently, only ```.xlsx``` is supported!!!
@@ -45,7 +45,14 @@ table2xlsx.getExcel({
     dataSource: dataSource
 });
 ````
-**getBytes(columns:IColumn[],dataSource: IData[]):any**  
+or
+````
+table2xlsx.getExcel({
+    target: document.querySelector('#export') as HTMLElement,
+    fileName: "a_ce is cool"
+});
+````
+**getBytes(option: IOption):any**  
 ```` 
 const fileName = option.fileName + '.xlsx';
 const bytes = getBytes(columns, dataSource)
@@ -61,7 +68,8 @@ try {
 ````
 interface IOption {
     fileName: string
-    columns: {
+    target?: Element
+    columns?: {
          title: string
          width?: string | number
          align?: "left" | 'center' | 'right'
@@ -69,7 +77,7 @@ interface IOption {
          children?: IColumn[]
          [key: string]: any
      }[]
-    dataSource:  {[index: string]: any}[]
+    dataSource?:  {[index: string]: any}[]
 }
 ```` 
 **getExcelSync(option:IOption):Promise\<unknown>**  

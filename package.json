@@ -1,7 +1,7 @@
 {
   "name": "table2xlsx",
-  "version": "1.0.5",
-  "description": "html table to xlsx without render dom",
+  "version": "1.0.6",
+  "description": "export xlsx file using html table without render dom",
   "main": "/lib/main.js",
   "files": [
     "lib",
