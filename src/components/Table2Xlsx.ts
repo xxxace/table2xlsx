@@ -2,6 +2,7 @@ import Table from "./Table";
 import FileSaver from 'file-saver';
 import {write, utils} from 'xlsx';
 import {IColumn, IData} from "../../types/index";
+import {isElemnt} from '../utils/util'
 
 export interface IOption {
     fileName: string
@@ -15,15 +16,29 @@ export function createTable(columns: IColumn[], dataSource: IData[]): HTMLTableE
 }
 
 export function getBytes(option: IOption) {
-    const table = option.target || createTable(option.columns || [], option.dataSource || []);
+    if (option.target && !isElemnt(option.target)) {
+        throw new Error('[Type Error]prop target is no a Element.');
+        return;
+    }
+
+    let table = null;
+
+    if (option.target) {
+        table = option.target;
+    } else {
+        table = createTable(option.columns || [], option.dataSource || []);
+    }
+
     const workbook = utils.table_to_book(table);
     const bytes = write(workbook, {bookType: 'xlsx', bookSST: true, type: 'array'});
-    return bytes
+    return bytes;
 }
 
 export function getExcel(option: IOption) {
     const fileName = option.fileName + '.xlsx';
     const bytes = getBytes(option);
+
+    if (!bytes) return;
 
     try {
         const type = 'application/octet-stream';
@@ -38,6 +53,8 @@ export function getExcelSync(option: IOption) {
     const bytes = getBytes(option);
 
     return new Promise(async (resolve, reject) => {
+        if (!bytes) reject(bytes);
+
         try {
             const type = 'application/octet-stream';
             FileSaver.saveAs(new Blob([bytes], {type}), fileName);

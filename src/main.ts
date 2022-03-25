@@ -1,4 +1,4 @@
-import {getExcel,getExcelSync} from "./components/Table2Xlsx";
+import {getExcel,getBytes,getExcelSync} from "./components/Table2Xlsx";
 import {IColumn, IData} from "../types/index";
 
 const columns: IColumn[] = [{
@@ -39,20 +39,27 @@ window.onload= ()=>{
     let exportBtn = document.querySelector('#export') as HTMLElement
 
     exportBtn.addEventListener('click',()=>{
-        // getExcelSync({
-        //     fileName:'ace_is_me',
-        //     target:document.querySelector('#tb') as HTMLElement
-        // }).then(res=>{
-        //     console.log('success')
-        // }).catch(err=>{
-        //     console.log('error')
-        // })
+        getExcel({
+            fileName:'ace_is_me',
+            target:document.querySelector('#tb') as HTMLElement
+        })
+        console.log('xxxx')
 
 
-        getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
-        console.log('success')
-    }).catch(err => {
-        console.log('error')
-    });
+    //     getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
+    //     console.log('success')
+    // }).catch(err => {
+    //     console.log('error')
+    // });
     })
 }
+
+// import FileSaver from 'file-saver'
+// try {
+//     FileSaver.saveAs(new Blob([getBytes({
+//         fileName:'x',
+//         target: document.querySelector("#tb") as HTMLElement
+//     })], {type: 'application/octet-stream'}), 'test.xlsx')
+// } catch (e) {
+//     console.log(e)
+// }

@@ -103,3 +103,13 @@ export const convertToRows = (originColumns: ColumnArray): Array<ColumnArray> =>
     return rows
 }
 
+export function isElemnt(target: Element | any | undefined) {
+    if (!target) return false;
+    if (typeof target !== 'object') return false;
+    if (target.nodeName && target.nodeType && target.tagName) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
