@@ -1,5 +1,5 @@
 import Table from "./Table";
-import FileSaver from 'file-saver';
+import {saveAs} from 'file-saver';
 import {write, utils} from 'xlsx';
 import {IColumn, IData} from "../../types/index";
 import {isElemnt} from '../utils/util'
@@ -42,13 +42,13 @@ export function getExcel(option: IOption) {
 
     try {
         const type = 'application/octet-stream';
-        FileSaver.saveAs(new Blob([bytes], {type}), fileName);
+        saveAs(new Blob([bytes], {type}), fileName);
     } catch (e) {
         if (typeof e !== "undefined") console.log(e, bytes);
     }
 }
 
-export function getExcelSync(option: IOption) {
+export function getExcelAsync(option: IOption) {
     const fileName = option.fileName + '.xlsx';
     const bytes = getBytes(option);
 
@@ -57,7 +57,7 @@ export function getExcelSync(option: IOption) {
 
         try {
             const type = 'application/octet-stream';
-            FileSaver.saveAs(new Blob([bytes], {type}), fileName);
+            saveAs(new Blob([bytes], {type}), fileName);
             resolve(bytes)
         } catch (e) {
             if (typeof e !== "undefined") console.log(e, bytes);

@@ -1,5 +1,5 @@
-import {getExcel,getBytes,getExcelSync} from "./components/Table2Xlsx";
-import {IColumn, IData} from "../types/index";
+import { getExcel, getBytes, getExcelAsync } from "./components/Table2Xlsx";
+import { IColumn, IData } from "../types/index";
 
 const columns: IColumn[] = [{
     title: 'col1',
@@ -35,22 +35,22 @@ const dataSource: IData[] = [{
 //     });
 // }, 2000)
 
-window.onload= ()=>{
+window.onload = () => {
     let exportBtn = document.querySelector('#export') as HTMLElement
 
-    exportBtn.addEventListener('click',()=>{
+    exportBtn.addEventListener('click', () => {
         getExcel({
-            fileName:'ace_is_me',
-            target:document.querySelector('#tb') as HTMLElement
+            fileName: 'ace_is_me',
+            target: document.querySelector('#tb') as HTMLElement
         })
         console.log('xxxx')
 
 
-    //     getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
-    //     console.log('success')
-    // }).catch(err => {
-    //     console.log('error')
-    // });
+        //     getExcelSync({fileName: '測試測試', columns, dataSource}).then(res => {
+        //     console.log('success')
+        // }).catch(err => {
+        //     console.log('error')
+        // });
     })
 }
 

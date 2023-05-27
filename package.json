@@ -2,7 +2,7 @@
   "name": "table2xlsx",
   "version": "1.0.8",
   "description": "export xlsx file using html table without render dom",
-  "main": "/lib/main.js",
+  "type": "module",
   "files": [
     "lib",
     "src",
@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "serve": "webpack server --config build/webpack.dev.js",
-    "lib": "webpack --config build/webpack.lib.js"
+    "lib": "webpack --config build/webpack.lib.js",
+    "lib-rollup": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -28,14 +29,20 @@
   },
   "homepage": "https://github.com/xxxace/table2xlsx#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.1",
     "babel-loader": "^8.2.3",
     "bundle-stats-webpack-plugin": "^3.2.2",
     "clean-webpack-plugin": "^4.0.0",
     "core-js": "^3.20.0",
     "html-webpack-plugin": "^5.5.0",
     "progress-bar-webpack-plugin": "^2.1.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-terser": "^7.0.2",
     "terser-webpack-plugin": "^5.3.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
@@ -47,6 +54,7 @@
   "dependencies": {
     "@types/file-saver": "^2.0.4",
     "file-saver": "^2.0.5",
+    "tslib": "^2.5.2",
     "xlsx": "^0.17.4"
   }
 }
