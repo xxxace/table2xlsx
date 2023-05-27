@@ -11,8 +11,17 @@ or
 ````yarn add table2xlsx````
 
 **usage:**
+browser side
+```
+   table2xlsx.getExcel({
+        fileName: "a_ce is cool",
+        columns: columns,
+        dataSource: dataSource
+    });
+```
+esm
 ````
-import table2xlsx from "table2xlsx";
+import * as table2xlsx from "table2xlsx";
 
 const columns = [{
     title: 'col1',
@@ -80,11 +89,11 @@ interface IOption {
     dataSource?:  {[index: string]: any}[]
 }
 ```` 
-**getExcelSync(option:IOption):Promise\<unknown>**  
+**getExcelAsync(option:IOption):Promise\<unknown>**  
 ```` 
 // 在调用"fliveSave.saveAs"后立即调用resolve,所以不会太精准
 // "resolve" fire immediately after "fliveSave.saveAs" fired so it won't be precise
-getExcelSync({fileName: 'a_ce is dope', columns, dataSource}).then(res => {
+getExcelAsync({fileName: 'a_ce is dope', columns, dataSource}).then(res => {
     console.log('success')
 }).catch(err => {
     console.log('error')
@@ -96,8 +105,4 @@ getExcelSync({fileName: 'a_ce is dope', columns, dataSource}).then(res => {
 <br/>
 如果你有兴趣或对我的代码实在看不下去欢迎来参与建设改造
 <br/>
-欢迎加群交流，群过期了欢迎加我个人微信进群（备注：t2x）
-<br/>
-<img src="https://raw.githubusercontent.com/xxxace/table2xlsx/main/qrcode_ace.jpg" width="260"  alt="微信小程序"/>
-<img src="https://raw.githubusercontent.com/xxxace/table2xlsx/main/qrcode_group.jpg" width="268"  alt="微信小程序"/><br/>
 
