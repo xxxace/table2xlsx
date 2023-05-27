@@ -2,7 +2,7 @@ const path = require("path");
 const ProgressWebpackPlugin = require("progress-bar-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
-const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
+// const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -65,6 +65,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new ProgressWebpackPlugin(),
-        new BundleStatsWebpackPlugin(),
+        new BundleAnalyzerPlugin()
     ]
 }
