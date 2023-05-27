@@ -13,6 +13,22 @@ const resolve = p => path.resolve(__dirname, p);
 const input = [resolve('src/components/index.ts')];
 const pkg = require(resolve("package.json"));
 
+// , {
+//     input,
+//     output: [{
+//         dir: `lib/${pkg.name}.cjs.js`,
+//         name: pkg.name,
+//         format: 'cjs',
+//         exports: 'named',
+//         sourcemap: true
+//     }],
+//     plugins: [
+//         commonjs(),
+//         typescript(),
+//         nodeResolve()
+//     ]
+// }
+
 export default [{
     input,
     output: {
@@ -30,19 +46,5 @@ export default [{
             exclude: 'node_modules/**'
         }),
         terser()
-    ]
-}, {
-    input,
-    output: [{
-        dir: `lib/${pkg.name}.cjs.js`,
-        name: pkg.name,
-        format: 'cjs',
-        exports: 'named',
-        sourcemap: true
-    }],
-    plugins: [
-        commonjs(),
-        typescript(),
-        nodeResolve()
     ]
 }]
