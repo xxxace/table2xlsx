@@ -11,6 +11,7 @@ or
 ````yarn add table2xlsx````
 
 **usage:**
+<br/>
 browser side
 ```
    table2xlsx.getExcel({
@@ -21,7 +22,8 @@ browser side
 ```
 esm
 ````
-import * as table2xlsx from "table2xlsx";
+import table2xlsx from "table2xlsx";
+import {getExcel} from "table2xlsx";
 
 const columns = [{
     title: 'col1',
