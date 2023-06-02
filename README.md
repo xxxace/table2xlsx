@@ -13,6 +13,8 @@ or
 **usage:**
 <br/>
 browser side
+</br>
+[download link](https://github.com/xxxace/table2xlsx/blob/main/lib/table2xlsx.js)
 ```
    table2xlsx.getExcel({
         fileName: "a_ce is cool",
