@@ -1,11 +1,11 @@
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
-import {nodeResolve} from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import {terser} from "rollup-plugin-terser";
+import { terser } from "rollup-plugin-terser";
 import path from 'node:path'
-import {createRequire} from 'node:module'
+import { createRequire } from 'node:module'
 
 const require = createRequire(import.meta.url);
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -35,6 +35,24 @@ export default [{
         name: pkg.name,
         file: `lib/${pkg.name}.js`,
         format: 'umd',
+        sourcemap: false,
+    },
+    plugins: [
+        nodeResolve(),
+        commonjs(),
+        typescript(),
+        babel({
+            babelHelpers: "bundled",
+            exclude: 'node_modules/**'
+        }),
+        terser()
+    ]
+}, {
+    input,
+    output: {
+        name: pkg.name,
+        file: `lib/${pkg.name}.esm.js`,
+        format: 'esm',
         sourcemap: false,
     },
     plugins: [
