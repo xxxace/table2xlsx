@@ -15,6 +15,7 @@ or
 browser side
 </br>
 [download link](https://github.com/xxxace/table2xlsx/blob/main/lib/table2xlsx.js)
+[download link](https://github.com/xxxace/table2xlsx/blob/main/lib/table2xlsx.esm.js)
 ```
    table2xlsx.getExcel({
         fileName: "a_ce is cool",

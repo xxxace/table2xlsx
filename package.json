@@ -1,6 +1,6 @@
 {
   "name": "table2xlsx",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "export xlsx file using html table without render dom",
   "type": "module",
   "main": "/lib/table2xlsx.js",

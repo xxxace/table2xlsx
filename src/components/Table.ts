@@ -1,5 +1,5 @@
-import {convertToRows, createElement as h} from "../utils/util";
-import {IColumn, IData} from "../../types/index"
+import { convertToRows, createElement as h } from "../utils/util";
+import { IColumn, IData } from "../../types/index"
 
 export default class Table {
     static columns: Array<IColumn> = []
@@ -28,8 +28,8 @@ export default class Table {
             const thList: HTMLTableCellElement[] = [];
 
             row.forEach(column => {
-                const {width, align, colSpan, rowSpan, title} = column;
-                thList.push(h("th", {width, align, colSpan, rowSpan}, [title]));
+                const { width, align, colSpan, rowSpan, title } = column;
+                thList.push(h("th", { width, align, colSpan, rowSpan }, [title]));
             });
 
             trList.push(h("tr", null, thList));
@@ -45,7 +45,7 @@ export default class Table {
             const tdList: HTMLTableCellElement[] = [];
 
             columns.forEach(column => {
-                const {dataIndex} = column;
+                const { dataIndex } = column;
                 tdList.push(h("td", null, [data[dataIndex!]]));
             });
 
@@ -56,6 +56,16 @@ export default class Table {
     }
 
     static getDataColumns(originColumns: Array<IColumn>): Array<IColumn> {
-        return originColumns.filter(oc => oc.dataIndex);
+        const dataColumns: IColumn[] = []
+
+        originColumns.forEach(oc => {
+            if (oc.dataIndex) {
+                dataColumns.push(oc)
+            } else if (oc.children) {
+                dataColumns.push(...Table.getDataColumns(oc.children))
+            }
+        });
+        
+        return dataColumns
     }
 }
